@@ -3,13 +3,13 @@
 
 #define PI 3.14159265358979323846
 
-// reads a whole number, keeps asking till the user gives a real one
-int readInt(const char *prompt) {
+
+int readInt(const char *p) {
     char line[100];
     int value;
 
     while (1) {
-        printf("%s", prompt);
+        printf("%s", p);
         fgets(line, sizeof(line), stdin);
         if (sscanf(line, "%d", &value) == 1)
             return value;
@@ -17,13 +17,13 @@ int readInt(const char *prompt) {
     }
 }
 
-// same idea but for decimal numbers
-double readDouble(const char *prompt) {
+
+double readDouble(const char *p) {
     char line[100];
     double value;
 
     while (1) {
-        printf("%s", prompt);
+        printf("%s", p);
         fgets(line, sizeof(line), stdin);
         if (sscanf(line, "%lf", &value) == 1)
             return value;
@@ -53,7 +53,7 @@ double toRadians(double degrees) {
     return degrees * PI / 180.0;
 }
 
-// asks if the angle is degrees or radians and gives it back in radians
+
 double getAngleInRadians(double rawValue, char *unitLabelOut) {
     int unitChoice;
 
@@ -90,7 +90,8 @@ int main() {
 
         switch (choice) {
 
-        case 1: // add
+            // add
+        case 1:
             a = readDouble("Enter value A: ");
             b = readDouble("Enter value B: ");
             result = a + b;
@@ -98,7 +99,8 @@ int main() {
             printf("Result     : %.4f\n", result);
             break;
 
-        case 2: // subtract
+            // subtract
+        case 2: 
             a = readDouble("Enter value A: ");
             b = readDouble("Enter value B: ");
             result = a - b;
@@ -106,7 +108,8 @@ int main() {
             printf("Result     : %.4f\n", result);
             break;
 
-        case 3: // multiply
+            // multiply
+        case 3: 
             a = readDouble("Enter value A: ");
             b = readDouble("Enter value B: ");
             result = a * b;
@@ -114,7 +117,8 @@ int main() {
             printf("Result     : %.4f\n", result);
             break;
 
-        case 4: // divide
+            // divide
+        case 4: 
             a = readDouble("Enter value A: ");
             b = readDouble("Enter value B: ");
             if (b == 0) {
@@ -126,7 +130,8 @@ int main() {
             }
             break;
 
-        case 5: // power
+            // power
+        case 5: 
             a = readDouble("Enter base value A: ");
             b = readDouble("Enter power value B: ");
             result = pow(a, b);
@@ -134,7 +139,8 @@ int main() {
             printf("Result     : %.4f\n", result);
             break;
 
-        case 6: // square root
+            // square root
+        case 6: 
             a = readDouble("Enter value: ");
             if (a < 0) {
                 printf("Error: Cannot find square root of a negative number.\n");
@@ -145,7 +151,8 @@ int main() {
             }
             break;
 
-        case 7: // sin
+            // sin
+        case 7: 
             a = readDouble("Enter angle value: ");
             angle = getAngleInRadians(a, unitLabel);
             result = sin(angle);
@@ -153,7 +160,8 @@ int main() {
             printf("Result     : %.4f\n", result);
             break;
 
-        case 8: // cos
+            // cos
+        case 8:
             a = readDouble("Enter angle value: ");
             angle = getAngleInRadians(a, unitLabel);
             result = cos(angle);
@@ -161,7 +169,8 @@ int main() {
             printf("Result     : %.4f\n", result);
             break;
 
-        case 9: // tan
+            // tan
+        case 9: 
             a = readDouble("Enter angle value: ");
             angle = getAngleInRadians(a, unitLabel);
             if (fabs(cos(angle)) < 1e-10) {
@@ -173,7 +182,8 @@ int main() {
             }
             break;
 
-        case 10: // cot
+            // cot
+        case 10:
             a = readDouble("Enter angle value: ");
             angle = getAngleInRadians(a, unitLabel);
             if (fabs(sin(angle)) < 1e-10) {
@@ -185,7 +195,8 @@ int main() {
             }
             break;
 
-        case 11: // sec
+            // sec
+        case 11:
             a = readDouble("Enter angle value: ");
             angle = getAngleInRadians(a, unitLabel);
             if (fabs(cos(angle)) < 1e-10) {
@@ -197,7 +208,8 @@ int main() {
             }
             break;
 
-        case 12: // cosec
+            // cosec
+            case 12: 
             a = readDouble("Enter angle value: ");
             angle = getAngleInRadians(a, unitLabel);
             if (fabs(sin(angle)) < 1e-10) {
@@ -209,7 +221,9 @@ int main() {
             }
             break;
 
-        case 13: // log base 10
+            // log base 10
+            case 13: 
+
             a = readDouble("Enter value: ");
             if (a <= 0) {
                 printf("Error: log is only defined for values greater than 0.\n");
@@ -220,7 +234,8 @@ int main() {
             }
             break;
 
-        case 14: // natural log
+            // natural log
+            case 14:
             a = readDouble("Enter value: ");
             if (a <= 0) {
                 printf("Error: ln is only defined for values greater than 0.\n");
