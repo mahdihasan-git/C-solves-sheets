@@ -1,26 +1,11 @@
-/*
-    SCIENTIFIC CALCULATOR (Console Version)
-    Varsity Project - written in C
 
-    How it works:
-    - The menu shows 15 numbered operations.
-    - You type the number of the operation you want.
-    - The program asks for the value(s) it needs.
-    - It prints the Expression and the Result, just like a display.
-    - Option 15 (Exit) closes the program.
-
-    This version reads input one line at a time and checks that it
-    is really a valid number, so a typo can never freeze the program.
-*/
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <math.h>
 
 #define PI 3.14159265358979323846
 
-/* Reads one whole number from the user. Keeps asking until valid. */
+/* User interface */
 int readInt(const char *prompt) {
     char line[100];
     int value;
@@ -28,7 +13,6 @@ int readInt(const char *prompt) {
     while (1) {
         printf("%s", prompt);
         if (fgets(line, sizeof(line), stdin) == NULL) {
-            /* No more input available; exit the program safely. */
             printf("\nNo more input. Exiting.\n");
             exit(0);
         }
@@ -75,13 +59,12 @@ void printMenu() {
     printf("+----------+----------+-----------+\n");
 }
 
-/* Converts degrees to radians, since C's math functions use radians */
+
 double toRadians(double degrees) {
     return degrees * PI / 180.0;
 }
 
-/* Asks the user whether their angle is in degrees or radians,
-   and returns the angle already converted to radians for use in math.h */
+
 double getAngleInRadians(double rawValue, char *unitLabelOut) {
     int unitChoice;
 
