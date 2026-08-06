@@ -3,11 +3,12 @@ int main(){
     int a;
     scanf("%d",&a);
 
-    for(int i=a; i>=1; i++)
+    for(int i=1; a>=0; i++)
     {
-        i-=3;
-        if(i>=0){
-        printf("%d\n",i);
-        }
+        a-=3;
+        printf("%d\n",a);
+        
     }
+    return 0;
+    
 }
